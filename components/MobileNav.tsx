@@ -3,6 +3,7 @@
 import React from 'react'
 import {
     Sheet,
+    SheetClose,
     SheetContent,
     SheetTrigger,
   } from "@/components/ui/sheet"
@@ -33,31 +34,44 @@ const MobileNav = ({user}:MobileNavProps) => {
             
           <h1 className='text-26 font-ibm-plex-serif font-bold text-black-1'>Horizon</h1>
            </Link>
-           {sidebarLinks.map((item) =>{
+
+            <div className='mobilenav-sheet'>
+              <SheetClose asChild>
+                <nav className='flex h-full flex-col gap-6 pt-16 text-white'>
+                {sidebarLinks.map((item) =>{
             const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`) 
             return(
-              
+              <SheetClose asChild key={item.route}>
             <Link href={item.route} key={item.label} 
-             className={cn('sidebar-link',{'bg-bank-gradient':isActive})}
+             className={cn('mobilenav-sheet_close w-full',{'bg-bank-gradient':isActive})}
             >
                 
-                <div className='relative size-6'>
+                
                   <Image 
                   src={item.imgURL}
                   alt={item.label}
-                  fill
-                  className='brightness-[3] invert-0' 
+                  width={20}
+                  height={20}
+                  className={cn({'brightness-[3] invert-0': isActive})}
+            
+                  />
 
-                  >
+               
 
-                  </Image>
-
-                </div>
-                <p className={cn("sidebar-label",{"!text-white":isActive})}>{item.label}</p>
+                <p className={cn("text-16 font-semibold text-black-2 ",{"text-white":isActive})}>{item.label}</p>
               
             </Link>  
+            </SheetClose>
             )
            })}
+
+
+            USER
+                </nav>
+              </SheetClose>
+            </div>
+
+          FOOTeRr
   </SheetContent>
 
 </Sheet>

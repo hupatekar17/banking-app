@@ -1,4 +1,3 @@
-
 'use client'
 import React from 'react'
 import Link from 'next/link'
@@ -18,7 +17,7 @@ const Sidebar = ({user}:SiderbarProps) => {
           <Image src="/icons/logo.svg"
           width={34}
           height={34}
-          alt='Horizon'
+          alt='Horizon Logo'
           className='size-[24px] max-xl:size-14' />
             
           <h1 className='sidebar-logo'>Horizon</h1>
@@ -36,9 +35,8 @@ const Sidebar = ({user}:SiderbarProps) => {
                   src={item.imgURL}
                   alt={item.label}
                   fill
-                  className='brightness-[3] invert-0' 
+                  className={cn({'brightness-[3] invert-0': isActive})}
             
-                  
                   >
 
                   </Image>
